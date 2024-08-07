@@ -2,8 +2,11 @@ import os as OS
 from dotenv import load_dotenv
 import shutil
 import re
+import pandas as pd
 
 load_dotenv()
+descripcion_web = OS.getenv("DESCRIPCION_WEB")
+excel = pd.read_excel(descripcion_web)
 
 
 def mover_y_renombrar_archivos(folio, cliente, source_folder, destination_folder):
@@ -23,10 +26,16 @@ def mover_y_renombrar_archivos(folio, cliente, source_folder, destination_folder
             print(f"Archivo movido y renombrado: {new_filename}")
 
 
-folio = "1092"
-cliente = "cliente"
+folioP = re.search(r"Folio\s(\d+)", excel["NuevoFolio"][0])
+
+if folioP:
+    folioN = folioP.group(1)
+
+
+folio = folioN
+cliente = excel["Cliente"][0]
 source_folder = OS.getenv("SOURCE_FOLDER")
 destination_folder = OS.getenv("DESTINATION_FOLDER")
-
+print(cliente)
 
 mover_y_renombrar_archivos(folio, cliente, source_folder, destination_folder)

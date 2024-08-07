@@ -12,7 +12,7 @@ lista_nombres = OS.getenv("LISTA_NOMBRES")
 excel = pd.read_excel(descripcion_web)
 excel_Nombres = pd.read_excel(lista_nombres)
 
-
+excel["Descripcion"] = excel["Descripcion"].fillna("")
 texto_original = excel["Descripcion"][0]
 nueva_oc = excel["OC"][0] if pd.notna(excel["OC"][0]) else None
 nuevo_kit = excel["Kit"][0] if pd.notna(excel["Kit"][0]) else None

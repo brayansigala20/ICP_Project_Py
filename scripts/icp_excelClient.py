@@ -35,7 +35,7 @@ kit = excel["NUMERO DE KIT"].to_dict()
 ubicacion = excel["UBICACIÓN"].to_dict()
 numeroDeServicios = excel["# DE SERVICIOS"].to_dict()
 wb = Workbook()
-
+print(clientName)
 ws = wb.active
 ws.title = "Lista de Nombres"
 

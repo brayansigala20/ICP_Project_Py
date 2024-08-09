@@ -26,16 +26,10 @@ def mover_y_renombrar_archivos(folio, cliente, source_folder, destination_folder
             print(f"Archivo movido y renombrado: {new_filename}")
 
 
-folioP = re.search(r"Folio\s(\d+)", excel["NuevoFolio"][0])
-
-if folioP:
-    folioN = folioP.group(1)
-
-
-folio = folioN
+folio = excel["NuevoFolio"][0]
 cliente = excel["Cliente"][0]
 source_folder = OS.getenv("SOURCE_FOLDER")
 destination_folder = OS.getenv("DESTINATION_FOLDER")
-print(cliente)
+
 
 mover_y_renombrar_archivos(folio, cliente, source_folder, destination_folder)

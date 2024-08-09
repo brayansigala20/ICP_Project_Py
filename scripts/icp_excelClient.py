@@ -34,8 +34,8 @@ orderPurchase = excel["OC CLIENTE"].to_dict()
 kit = excel["NUMERO DE KIT"].to_dict()
 ubicacion = excel["UBICACIÓN"].to_dict()
 numeroDeServicios = excel["# DE SERVICIOS"].to_dict()
+email = excel["EMAIL"].to_dict()
 wb = Workbook()
-print(clientName)
 ws = wb.active
 ws.title = "Lista de Nombres"
 
@@ -45,6 +45,7 @@ ws["C1"] = "Oc"
 ws["D1"] = "KIT"
 ws["E1"] = "Ubicacion"
 ws["F1"] = "Sercicios"
+ws["G1"] = "Email"
 
 for idx, item in enumerate(clientName.values(), start=2):
     text = item
@@ -69,5 +70,9 @@ for idx, item in enumerate(ubicacion.values(), start=2):
 for idx, item in enumerate(numeroDeServicios.values(), start=2):
     text = item
     ws.cell(row=idx, column=6, value=text)
+
+for idx, item in enumerate(email.values(), start=2):
+    text = item
+    ws.cell(row=idx, column=7, value=text)
 
 wb.save(lista_nombres)
